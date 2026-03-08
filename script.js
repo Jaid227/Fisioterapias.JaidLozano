@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Configuración de WhatsApp
-    const PHONE_NUMBER = '5215512345678'; // Reemplaza con tu número real
+    const PHONE_NUMBER = '5591461227'; // Reemplaza con tu número real
     const DEFAULT_MESSAGE = 'Hola Jaid, me gustaría reservar una sesión de';
 
     // Función para generar mensaje de WhatsApp
@@ -113,3 +113,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 });
+
+
+function toggleFullscreen(img){
+
+if(!document.fullscreenElement){
+img.requestFullscreen();
+}else{
+document.exitFullscreen();
+}
+
+}
