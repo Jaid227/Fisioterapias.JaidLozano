@@ -115,13 +115,39 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function toggleFullscreen(img){
-
-if(!document.fullscreenElement){
-img.requestFullscreen();
-}else{
-document.exitFullscreen();
+function toggleFullscreen(img) {
+    // Si ya estamos en pantalla completa, salimos
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+        return;
+    }
+    
+    // Si no, entramos en pantalla completa con la imagen
+    img.requestFullscreen().catch(err => {
+        console.log(`Error al entrar en pantalla completa: ${err.message}`);
+    });
 }
+
+// Detectar clic en cualquier lugar durante pantalla completa para salir
+document.addEventListener('fullscreenchange', function() {
+    if (!document.fullscreenElement) {
+        // Ya no estamos en pantalla completa, no hacemos nada adicional
+        return;
+    }
+    
+    // Cuando entramos a pantalla completa, agregamos un listener temporal
+    const handleClick = function() {
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        }
+        document.removeEventListener('click', handleClick);
+    };
+    
+    // Pequeño delay para evitar que el clic que activó el fullscreen lo cierre inmediatamente
+    setTimeout(() => {
+        document.addEventListener('click', handleClick);
+    }, 100);
+});
 
 }
 
