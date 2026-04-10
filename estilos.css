@@ -565,7 +565,16 @@ body {
 }
 
 
+/* Mejorar la experiencia en pantalla completa */
+:-webkit-full-screen .therapy-image {
+    object-fit: contain;
+    background-color: black;
+}
 
+:fullscreen .therapy-image {
+    object-fit: contain;
+    background-color: black;
+}
 
 
 /* Estilos para las imágenes */
