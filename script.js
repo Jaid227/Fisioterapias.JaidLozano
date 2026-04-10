@@ -149,5 +149,5 @@ document.addEventListener('fullscreenchange', function() {
     }, 100);
 });
 
-}
+
 
